@@ -43,8 +43,8 @@ const start = async () => {
   } catch (err) {
     console.error(err)
   }
-  app.listen(3000, () => {
-    console.log('Auth Service listening on port 3000!!!');      
+  app.listen(process.env.PORT, () => {
+    console.log(`User Service listening on port ${process.env.PORT}!!!`);      
   });
 };
 
