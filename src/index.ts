@@ -11,6 +11,7 @@ import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
+import { doctorListRouter } from './routes/doctorList';
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use(currentUserRouter);
 app.use(signinRouter); 
 app.use(signoutRouter);
 app.use(signupRouter);
+app.use(doctorListRouter);
 
 app.all('*', async () => {
   throw new NotFoundError()
