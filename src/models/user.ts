@@ -7,6 +7,7 @@ interface UserAttrs {
   role: number;
   token: string;
   contact: string;
+  name: string;
 }
 
 interface UserDoc extends mongoose.Document {
@@ -15,6 +16,7 @@ interface UserDoc extends mongoose.Document {
   role: number;
   token: string;
   contact: string;
+  name: string;
 }
 
 interface UserModel extends mongoose.Model<UserDoc> {
@@ -37,6 +39,9 @@ const userSchema = new mongoose.Schema({
     type: String
   },
   contact: {
+    type: String
+  },
+  name: {
     type: String
   }
 }, {

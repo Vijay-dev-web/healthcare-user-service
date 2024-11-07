@@ -21,13 +21,13 @@ router.post('/register', [
   validateRequest,
   async (req: Request, res: Response) => {
 
-  const { email, password, role, token, contact } = req.body;
+  const { email, password, role, token, contact, name } = req.body;
   const existingUser = await User.findOne({ email });
   if(existingUser) {
     throw new BadRequestError('Email in use!!!')
   }
 
-  const user = User.build({ email, password, role, token, contact}); 
+  const user = User.build({ email, password, role, token, contact, name}); 
   await user.save();
 
   const userJwt = jwt.sign({
@@ -35,6 +35,7 @@ router.post('/register', [
     email: user.email,
     role,
     contact,
+    name
   }, process.env.JWT_KEY!);
 
   req.session = {
