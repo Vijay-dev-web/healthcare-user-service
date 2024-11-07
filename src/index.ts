@@ -10,6 +10,8 @@ import { NotFoundError } from './errors/not-found-error';
 import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 import * as dotenv from 'dotenv';
+import cors from 'cors';
+
 dotenv.config();
 
 const app = express();
@@ -20,7 +22,8 @@ app.use(
     signed: false,    
     secure: true      
   })
-)
+);
+app.use(cors());
 
 app.use(currentUserRouter);
 app.use(signinRouter); 
